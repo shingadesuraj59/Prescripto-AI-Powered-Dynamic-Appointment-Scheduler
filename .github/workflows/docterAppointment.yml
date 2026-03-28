@@ -1,0 +1,6 @@
+name: Docter Appointment App CI/CD
+
+on:
+  push:
+    branches:
+      - main
