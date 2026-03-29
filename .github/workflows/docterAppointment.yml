@@ -13,14 +13,20 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Deploy to EC2
+      - name: SSH into EC2 and Deploy
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USER }}
+          username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            cd Prescripto-AI-Powered-Dynamic-Appointment-Scheduler
+            cd ~/Prescripto-AI-Powered-Dynamic-Appointment-Scheduler
+
+            echo " Pulling latest code..."
             git pull origin main
+
+            echo " Rebuilding containers..."
             docker compose down
             docker compose up -d --build
+
+            echo " Deployment done!"
