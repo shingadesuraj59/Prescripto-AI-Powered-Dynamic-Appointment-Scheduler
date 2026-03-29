@@ -69,7 +69,7 @@ const Login = () => {
           <p>Please {state === 'Sign Up' ? 'sign up' : 'login'} to book appointment</p>
           {
             state === 'Sign Up' && <div className='w-full'>
-              <p>Full Name</p>
+              <p>full name</p>
               <input className='border border-zinc-300 rounded w-full p-1 mt-1' type="text" onChange={(e) => setName(e.target.value)}  value={name} required />
             </div>
           }
